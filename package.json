@@ -1,0 +1,19 @@
+{
+  "name": "campspot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node app.js"
+  },
+  "author": "Nathan Eichenlaub",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
