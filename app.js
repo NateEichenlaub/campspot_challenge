@@ -46,12 +46,13 @@ function adjacentReservations(search, reservations) {
 
 //convert date strings to moment objects
 function datesToMoments(data) {
-    data.search.startDate = moment(data.search.startDate);
-    data.search.endDate = moment(data.search.endDate);
+    var formatString = 'YYYY-MM-DD';
+    data.search.startDate = moment(data.search.startDate, formatString);
+    data.search.endDate = moment(data.search.endDate, formatString);
 
     data.reservations.map(r => {
-        r.startDate = moment(r.startDate);
-        r.endDate = moment(r.endDate);
+        r.startDate = moment(r.startDate, formatString);
+        r.endDate = moment(r.endDate, formatString);
         return r;
     });
 
