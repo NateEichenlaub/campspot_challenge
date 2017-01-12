@@ -19,7 +19,7 @@ describe('Campspot Programming Challenge', function() {
             assert.property(data, 'gapRules');
             assert.property(data, 'reservations');
         });
-    })
+    });
 
     describe('datesToMoments()', function() {
         it("should convert 'startDate' and 'endDate' properties of 'search' to moment objects", function() {
@@ -43,7 +43,7 @@ describe('Campspot Programming Challenge', function() {
 
             assert(moment.isMoment(testObj.search.startDate));
             assert(moment.isMoment(testObj.search.endDate));
-        })
+        });
         it("should convert 'startDate' and 'endDate' properties of all objects in 'reservations' array to moment objects", function() {
             var testObj = {
                 search: {
@@ -68,7 +68,7 @@ describe('Campspot Programming Challenge', function() {
             assert(moment.isMoment(testObj.reservations[1].startDate));
             assert(moment.isMoment(testObj.reservations[1].endDate));
         })
-    })
+    });
 
     describe('adjacentReservations()', function() {
         it('should return last reservation with start date before or on search start date and first reservation with start date after search start date', function() {
@@ -152,18 +152,18 @@ describe('Campspot Programming Challenge', function() {
             var adjacent = app.adjacentReservations(search, reservations);
             assert(!adjacent.next)
         });
-    })
+    });
 
     describe('gap()', function() {
         it('should return the gap in days between the two date ranges if they do not overlap', function() {
             var range1 = {
                 startDate: moment('2017-01-01'),
                 endDate: moment('2017-01-03')
-            }
+            };
             var range2 = {
                 startDate: moment('2017-01-06'),
                 endDate: moment('2017-02-01')
-            }
+            };
 
             assert.equal(2, app.gap(range1, range2));
         });
@@ -172,11 +172,11 @@ describe('Campspot Programming Challenge', function() {
             var range2 = {
                 startDate: moment('2017-01-01'),
                 endDate: moment('2017-01-03')
-            }
+            };
             var range1 = {
                 startDate: moment('2017-01-06'),
                 endDate: moment('2017-02-01')
-            }
+            };
 
             assert.equal(2, app.gap(range1, range2));
         });
@@ -185,11 +185,11 @@ describe('Campspot Programming Challenge', function() {
             var range2 = {
                 startDate: moment('2017-01-01'),
                 endDate: moment('2017-02-01')
-            }
+            };
             var range1 = {
                 startDate: moment('2017-01-06'),
                 endDate: moment('2017-01-10')
-            }
+            };
 
             assert.equal(-1, app.gap(range1, range2));
         });
@@ -198,11 +198,11 @@ describe('Campspot Programming Challenge', function() {
             var range2 = {
                 startDate: moment('2017-01-01'),
                 endDate: moment('2017-01-10')
-            }
+            };
             var range1 = {
                 startDate: moment('2017-01-06'),
                 endDate: moment('2017-01-20')
-            }
+            };
 
             assert.equal(-1, app.gap(range1, range2));
         });
@@ -211,11 +211,11 @@ describe('Campspot Programming Challenge', function() {
             var range1 = {
                 startDate: moment('2017-01-01'),
                 endDate: moment('2017-01-10')
-            }
+            };
 
             assert.isNull(app.gap(range1, null));
         });
-    })
+    });
 
     describe('availableSites()', function() {
         it("should return an array of campsites that are available to book", function() {
@@ -292,9 +292,9 @@ describe('Campspot Programming Challenge', function() {
                     {"campsiteId": 9, "startDate": "2016-06-03", "endDate": "2016-06-05"},
                     {"campsiteId": 9, "startDate": "2016-06-12", "endDate": "2016-06-16"}
                 ]
-            }
+            };
 
-            data = app.datesToMoments(test_case);
+            var data = app.datesToMoments(test_case);
             var sites = app.availableSites(data.search, data.campsites, data.gapRules, data.reservations);
             assert(_.isEqual([5,6,8,9], sites.map(s => s.id)));
         })
